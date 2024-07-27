@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h2>Lista de musicas</h2>
+    <a href="{{ url_for('cadastrar') }}">Adicionar musica</a>
+    {% if not playlists %}
+    <p>Não há playlists registradas</p>
+    {% endif %}
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Tipo</th>
+                <th>Artista</th>
+                <th>Remover</th>
+                <th>Editar</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for playlist in playlists %}
+            <tr>
+                <td>{{ playlist.nome }}</td>
+                <td>{{ playlist.tipo }}</td>
+                <td>{{ playlist.artista }}</td>
+                <td><a href="{{ url_for('editar', chave=playlist.id)}}">Editar</a></td>
+                <td><a href="{{ url_for('apagar', chave=playlist.id)}}">Remover</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
