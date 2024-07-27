@@ -1,44 +1,37 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import *
+from bd import Playlist
 
 app = Flask(__name__)
-
-playlists = []
+pl = Playlist
 
 @app.route('/')
-def index():
-    return render_template('index.html')
+def listar_playlist():
+    playlists = pl.listar_playlist()
+    return render_template("playlist.html", playlists=playlists)
 
-@app.route('/playlists')
-def playlist_list():
-    return render_template('playlist_list.html', playlists=playlists)
+@app.route("/remover/<int:chave>")
+def apagar(chave):
+    pl.remove_playlist(chave)
+    return redirect('/')
 
-@app.route('/playlist/create', methods=['GET', 'POST'])
-def create_playlist():
+@app.route("/nova", methods=['GET', 'POST'])
+def cadastrar():
     if request.method == 'POST':
-        title = request.form.get('title')
-        description = request.form.get('description')
-        playlists.append({'title': title, 'description': description})
-        return redirect(url_for('playlist_list'))
-    return render_template('playlist_form.html', action='create')
+        dados = request.form.to_dict()
+        pl.nova_playlist(dados.get('nome'), dados.get('tipo'), dados.get('artista'))
+        return redirect('/')
+    return render_template('playlist_form.html', playlist=None, title='Nova Playlist')
 
-@app.route('/playlist/edit/<int:index>', methods=['GET', 'POST'])
-def edit_playlist(index):
-    if index < 0 or index >= len(playlists):
-        return "Playlist não encontrada", 404
+@app.route("/editar/<int:chave>", methods=['GET', 'POST'])
+def editar(chave):
     if request.method == 'POST':
-        title = request.form.get('title')
-        description = request.form.get('description')
-        playlists[index] = {'title': title, 'description': description}
-        return redirect(url_for('playlist_list'))
-    playlist = playlists[index]
-    return render_template('playlist_form.html', action='edit', playlist=playlist, index=index)
+        dados = request.form.to_dict()
+        pl.atualiza_playlist(chave, dados.get('nome'), dados.get('tipo'), dados.get('artista'))
+        return redirect('/')
+    playlist = pl.detalha_atleta(chave)
+    return render_template('playlist_form.html', playlist=playlist, title='Editar Playlist')
 
-@app.route('/playlist/delete/<int:index>', methods=['POST'])
-def delete_playlist(index):
-    if index < 0 or index >= len(playlists):
-        return "Playlist não encontrada", 404
-    playlists.pop(index)
-    return redirect(url_for('playlist_list'))
+
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
