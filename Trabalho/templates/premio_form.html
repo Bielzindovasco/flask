@@ -1,1 +1,19 @@
-
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Spotipobre</title>
+</head>
+<body>
+    <h2>Registre Premios</h2>
+    <form method="post">
+        <label for="nome">Nome do artista
+            <input type="text" name="artista" placeholder="Ex: Adele, Kanye West" value="{{ premio.artista}}" required/>
+        </label>
+        <label for="posicao">Premio recebido
+            <input type="text" name="premio" placeholder="Ex: The Best Song Of The Year" value="{{ premio.premios}}" required/>
+        </label>
+        <button type="submit">Salvar</button>
+    </form>
+</body>
+</html>
