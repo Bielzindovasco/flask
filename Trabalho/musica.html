@@ -7,8 +7,8 @@
 <body>
     <h2>Lista de musicas</h2>
     <a href="{{ url_for('cadastro') }}">Adicionar musica</a>
-    {% if not playlists %}
-    <p>Não há playlists registradas</p>
+    {% if not musicas %}
+    <p>Não há musicas registradas</p>
     {% endif %}
     <table border="1">
         <thead>
@@ -21,13 +21,13 @@
             </tr>
         </thead>
         <tbody>
-        {% for playlist in playlists %}
+        {% for musica in musicas %}
             <tr>
-                <td>{{ playlist.nome }}</td>
-                <td>{{ playlist.tipo }}</td>
-                <td>{{ playlist.artista }}</td>
-                <td><a href="{{ url_for('editar', chave=playlist.id)}}">Editar</a></td>
-                <td><a href="{{ url_for('apagar', chave=playlist.id)}}">Remover</a></td>
+                <td>{{ musica.nome }}</td>
+                <td>{{ musica.tipo }}</td>
+                <td>{{ musica.artista }}</td>
+                <td><a href="{{ url_for('editar', chave=musica.id)}}">Editar</a></td>
+                <td><a href="{{ url_for('apagar', chave=musica.id)}}">Remover</a></td>
             </tr>
         {% endfor %}
         </tbody>
