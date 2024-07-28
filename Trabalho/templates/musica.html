@@ -26,8 +26,8 @@
                 <td>{{ musica.nome }}</td>
                 <td>{{ musica.tipo }}</td>
                 <td>{{ musica.artista }}</td>
-                <td><a href="{{ url_for('editar', chave=musica.id)}}">Editar</a></td>
-                <td><a href="{{ url_for('apagar', chave=musica.id)}}">Remover</a></td>
+                <td><a href="{{ url_for('editar_musica', chave=musica.id)}}">Editar</a></td>
+                <td><a href="{{ url_for('remove_musica', chave=musica.id)}}">Remover</a></td>
             </tr>
         {% endfor %}
         </tbody>
