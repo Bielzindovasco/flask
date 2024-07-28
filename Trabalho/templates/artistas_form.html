@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Spotipobre</title>
+</head>
+<body>
+    <h2>Registre suas musicas</h2>
+    <form method="post">
+        <label for="nome">Nome do Artista
+            <input type="text" name="nome" placeholder="Ex: Adele, Taylor Swift" value="{{ artista.nome}}" required/>
+        </label>
+        <label for="posicao">Estilo Musical
+            <input type="text" name="estilo_musica" placeholder="Ex: Rock, Pop" value="{{ artista.estilo_musica}}" required/>
+        </label>
+        <label for="artista">Sexo
+            <input type="text" name="sexo" placeholder="Ex: Masculino, Feminino" value="{{ artista.sexo}}" required/>
+        </label>
+        <button type="submit">Salvar</button>
+    </form>
+</body>
+</html>
