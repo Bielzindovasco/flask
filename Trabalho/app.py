@@ -33,7 +33,7 @@ def editar(chave):
 
 @app.route('/artista')
 def listar_artistas():
-    times = t.listar_artistas()
+    artistas = a.listar_artistas()
     return render_template("artistas.html", artistas=artistas)
 
 @app.route("/artista/remover/<int:id_time>")
@@ -49,13 +49,13 @@ def cadastro_artista():
         return redirect('/artista')
     return render_template('artista_form.html', artista=None, title='Novo(a) artista')
 
-@app.route("/artista/editar/<int:id_time>", methods=['GET', 'POST'])
+@app.route("/artista/editar/<int:id_artista>", methods=['GET', 'POST'])
 def editar_artista(id_artista):
     if request.method == 'POST':
         ds = request.form.to_dict()
-        t.atualiza_artista(id_artista, ds.get('nome'))
+        a.atualiza_artista(id_artista, ds.get('nome'))
         return redirect('/artista')
-    artista = a.detalha_artista(id_time)
+    artista = a.detalha_artista(id_artista)
     return render_template('artista_form.html', artista=artista, title='Editar Artista')
 
 
