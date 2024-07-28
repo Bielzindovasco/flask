@@ -212,7 +212,7 @@ class Estilo:
         conn.commit()
         conn.close()
 
-class Premios:
+class Premio:
     def criar():
         conn = sqlite3.connect('premio.db')
         cursor = conn.cursor()
