@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Spotify</title>
+</head>
+<body>
+    <h2>Anexar Artistas<h2>
+    <h3>Lista de Artistas</h3>
+    <button><a href="{{ url_for('cadastro_artista') }}">Adicionar Artista</a></button>
+    <button><a href="{{ url_for('listar_artistas') }}">Visualização </a></button>
+    {% if not artista %}
+        <p>Não há artistas registrados</p>
+    {% endif %}
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Nome do Artista</th>
+                    <th>Estilo Musical</th>
+                    <th>Sexo</th>
+                    <th>Editar</th>
+                    <th>Remover</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for artista in artista %}
+                <tr>
+                    <td>{{ artista.nome }}</td>
+                    <td>{{ artista.estilo_musica }}</td>
+                    <td>{{ artista.sexo }}</td>
+                    <td><a href="{{ url_for('editar_competicao', chave=competicao.id)}}">Editar</a></td>
+                    <td><a href="{{ url_for('apagar_competicao', chave=competicao.id)}}">Remover</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+</body>
+</html>
