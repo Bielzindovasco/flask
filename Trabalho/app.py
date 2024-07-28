@@ -15,7 +15,7 @@ def apagar(chave):
     return redirect('/')
 
 @app.route("/nova", methods=['GET', 'POST'])
-def cadastrar():
+def cadastro():
     if request.method == 'POST':
         dados = request.form.to_dict()
         pl.nova_playlist(dados.get('nome'), dados.get('tipo'), dados.get('artista'))
@@ -28,7 +28,7 @@ def editar(chave):
         dados = request.form.to_dict()
         pl.atualiza_playlist(chave, dados.get('nome'), dados.get('tipo'), dados.get('artista'))
         return redirect('/')
-    playlist = pl.detalha_atleta(chave)
+    playlist = pl.atualiza_playlist(chave)
     return render_template('playlist_form.html', playlist=playlist, title='Editar Playlist')
 
 
