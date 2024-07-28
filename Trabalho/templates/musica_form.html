@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Spotipobre</title>
+</head>
+<body>
+    <h2>Registre suas musicas</h2>
+    <form method="post">
+        <label for="nome">Nome da musica
+            <input type="text" name="nome" placeholder="Ex: Skyfall, I Wonder" value="{{ musica.nome}}" required/>
+        </label>
+        <label for="posicao">Tipo da musica
+            <input type="text" name="tipo" placeholder="Ex: Rock, Pop" value="{{ musica.tipo}}" required/>
+        </label>
+        <label for="artista">Artista da musica
+            <input type="text" name="artista" placeholder="Ex: Adele, Kanye West" value="{{ musica.artista}}" required/>
+        </label>
+        <button type="submit">Salvar</button>
+    </form>
+</body>
+</html>
