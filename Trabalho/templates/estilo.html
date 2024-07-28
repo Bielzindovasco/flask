@@ -1,1 +1,35 @@
 
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Spotify</title>
+</head>
+<body>
+    <h2>Anexar Artistas<h2>
+    <h3>Lista de Artistas</h3>
+    <button><a href="{{ url_for('novo_estilo') }}">Adicionar Estilo</a></button>
+    <button><a href="{{ url_for('listar_estilos') }}">Visualização </a></button>
+    {% if not estilos %}
+        <p>Não há estilos registrados</p>
+    {% endif %}
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Nome do estilo</th>
+                    <th>Editar</th>
+                    <th>Remover</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for estilo in estilo %}
+                <tr>
+                    <td>{{ estilo.nome_estilo }}</td>
+                    <td><a href="{{ url_for('editar_estilo', chave=estilo.id)}}">Editar</a></td>
+                    <td><a href="{{ url_for('remove_estilo', chave=estilo.id)}}">Remover</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+</body>
+</html>
