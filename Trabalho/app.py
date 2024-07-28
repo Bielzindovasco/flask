@@ -31,6 +31,33 @@ def editar(chave):
     playlist = pl.atualiza_playlist(chave)
     return render_template('playlist_form.html', playlist=playlist, title='Editar Playlist')
 
+@app.route('/artista')
+def listar_artistas():
+    times = t.listar_artistas()
+    return render_template("artistas.html", artistas=artistas)
+
+@app.route("/artista/remover/<int:id_time>")
+def apagar_artista(id_artista):
+    a.remove_artista(id_artista)
+    return redirect('/artista')
+
+@app.route("/artista/novo", methods=['GET', 'POST'])
+def cadastro_artista():
+    if request.method == 'POST':
+        ds = request.form.to_dict()
+        a.novo_time(ds.get('nome'))
+        return redirect('/artista')
+    return render_template('artista_form.html', artista=None, title='Novo(a) artista')
+
+@app.route("/artista/editar/<int:id_time>", methods=['GET', 'POST'])
+def editar_artista(id_artista):
+    if request.method == 'POST':
+        ds = request.form.to_dict()
+        t.atualiza_artista(id_artista, ds.get('nome'))
+        return redirect('/artista')
+    artista = a.detalha_artista(id_time)
+    return render_template('artista_form.html', artista=artista, title='Editar Artista')
+
 
 
 if __name__ == '__main__':
