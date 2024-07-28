@@ -1,1 +1,36 @@
-
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Spotify</title>
+</head>
+<body>
+    <h2>Anexar Premios<h2>
+    <h3>Lista de Premios</h3>
+    <button><a href="{{ url_for('novo_premio') }}">Adicionar Premio</a></button>
+    <button><a href="{{ url_for('listar_premio') }}">Visualização</a></button>
+    {% if not premios %}
+        <p>Não há premios registrados</p>
+    {% endif %}
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Nome do Artista</th>
+                    <th>Premio Musical</th>
+                    <th>Editar</th>
+                    <th>Remover</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for premio in premio %}
+                <tr>
+                    <td>{{ premio.artista }}</td>
+                    <td>{{ premio.premios }}</td>
+                    <td><a href="{{ url_for('editar_premio', chave=premio.id)}}">Editar</a></td>
+                    <td><a href="{{ url_for('remove_premio', chave=premio.id)}}">Remover</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+</body>
+</html>
