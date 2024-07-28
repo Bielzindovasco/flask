@@ -29,7 +29,7 @@
                     <td>{{ artista.estilo_musica }}</td>
                     <td>{{ artista.sexo }}</td>
                     <td><a href="{{ url_for('editar_competicao', chave=competicao.id)}}">Editar</a></td>
-                    <td><a href="{{ url_for('apagar_competicao', chave=competicao.id)}}">Remover</a></td>
+                    <td><a href="{{ url_for('remove_competicao', chave=competicao.id)}}">Remover</a></td>
                 </tr>
             {% endfor %}
             </tbody>
