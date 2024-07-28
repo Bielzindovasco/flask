@@ -1,8 +1,10 @@
 from flask import *
 from bd import musica
+from bd import artista
 
 app = Flask(__name__)
-pl = Playlist
+pl = Musica
+a = Artista
 
 @app.route('/')
 def listar_musica():
@@ -45,7 +47,7 @@ def apagar_artista(id_artista):
 def cadastro_artista():
     if request.method == 'POST':
         ds = request.form.to_dict()
-        a.novo_time(ds.get('nome'))
+        a.novo_artista(dados.get('nome'), ds.get('estilo_musica'), dados.get('sexo'))
         return redirect('/artista')
     return render_template('artista_form.html', artista=None, title='Novo(a) artista')
 
