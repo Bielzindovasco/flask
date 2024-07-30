@@ -36,8 +36,8 @@ def editar(chave):
     return render_template('musica_form.html', musica=musica, title='Editar Musica')
 
 @app.route('/artista')
-def listar_artistas():
-    artistas = a.listar_artistas()
+def listar_artista():
+    artistas = a.listar_artista()
     return render_template("artistas.html", artistas=artistas)
 
 @app.route("/artista/remover/<int:id_time>")
