@@ -37,7 +37,7 @@ def editar(chave):
 
 @app.route('/artista')
 def listar_artista():
-    artistas = a.listar_artista()
+    artistas = a.listar_artistas()
     return render_template("artistas.html", artistas=artistas)
 
 @app.route("/artista/remover/<int:id_time>")
@@ -63,7 +63,7 @@ def editar_artista(id_artista):
     return render_template('artista_form.html', artista=artista, title='Editar Artista')
 
 @app.route('/estilo')
-def listar_estilos():
+def listar_estilo():
     artistas = a.listar_estilos()
     return render_template("estilos.html", estilos=estilos)
 
@@ -81,7 +81,7 @@ def cadastro_estilo():
     return render_template('estilo_form.html', estilo=None, title='Novo estilo')
 
 @app.route("/estilo/editar/<int:id_estilo>", methods=['GET', 'POST'])
-def editar_artista(id_estilo):
+def editar_estilo(id_estilo):
     if request.method == 'POST':
         ds = request.form.to_dict()
         e.atualiza_estilo(id_estilo, ds.get('nome_estilo'))
