@@ -7,8 +7,8 @@
 <body>
     <h2>Anexar Artistas<h2>
     <h3>Lista de Artistas</h3>
-    <button><a href="{{ url_for('novo_artista') }}">Adicionar Artista</a></button>
-    <button><a href="{{ url_for('listar_artistas') }}">Visualização </a></button>
+    <button><a href="{{ url_for('cadastro_artista') }}">Adicionar Artista</a></button>
+    <button><a href="{{ url_for('listar_artista') }}">Visualização </a></button>
     {% if not artista %}
         <p>Não há artistas registrados</p>
     {% endif %}
@@ -29,7 +29,7 @@
                     <td>{{ artista.estilo_musica }}</td>
                     <td>{{ artista.sexo }}</td>
                     <td><a href="{{ url_for('editar_artista', chave=artista.id)}}">Editar</a></td>
-                    <td><a href="{{ url_for('remove_artista', chave=artista.id)}}">Remover</a></td>
+                    <td><a href="{{ url_for('apagar_artista', chave=artista.id)}}">Remover</a></td>
                 </tr>
             {% endfor %}
             </tbody>
