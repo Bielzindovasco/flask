@@ -28,7 +28,7 @@ class Musica:
         conn.close()
 
 
-    def listar_musicas():
+    def listar_musica():
         conn = sqlite3.connect('musica.db')
         cursor = conn.cursor()
         values = cursor.execute("SELECT * FROM musicas")
@@ -100,7 +100,7 @@ class Artista:
         conn.close()
 
 
-    def listar_artistas():
+    def listar_artista():
         conn = sqlite3.connect('artista.db')
         cursor = conn.cursor()
         values = cursor.execute("SELECT * FROM artistas")
@@ -170,7 +170,7 @@ class Estilo:
         conn.close()
 
 
-    def listar_estilos():
+    def listar_estilo():
         conn = sqlite3.connect('estilo.db')
         cursor = conn.cursor()
         values = cursor.execute("SELECT * FROM estilos")
