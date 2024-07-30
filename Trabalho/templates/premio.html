@@ -7,7 +7,7 @@
 <body>
     <h2>Anexar Premios<h2>
     <h3>Lista de Premios</h3>
-    <button><a href="{{ url_for('novo_premio') }}">Adicionar Premio</a></button>
+    <button><a href="{{ url_for('cadastro_premio') }}">Adicionar Premio</a></button>
     <button><a href="{{ url_for('listar_premio') }}">Visualização</a></button>
     {% if not premios %}
         <p>Não há premios registrados</p>
@@ -27,7 +27,7 @@
                     <td>{{ premio.artista }}</td>
                     <td>{{ premio.premios }}</td>
                     <td><a href="{{ url_for('editar_premio', chave=premio.id)}}">Editar</a></td>
-                    <td><a href="{{ url_for('remove_premio', chave=premio.id)}}">Remover</a></td>
+                    <td><a href="{{ url_for('apagar_premio', chave=premio.id)}}">Remover</a></td>
                 </tr>
             {% endfor %}
             </tbody>
