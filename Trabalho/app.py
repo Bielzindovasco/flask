@@ -37,7 +37,7 @@ def editar(chave):
 
 @app.route('/artista')
 def listar_artista():
-    artistas = a.listar_artistas()
+    artistas = a.listar_artista()
     return render_template("artistas.html", artistas=artistas)
 
 @app.route("/artista/remover/<int:id_time>")
@@ -64,7 +64,7 @@ def editar_artista(id_artista):
 
 @app.route('/estilo')
 def listar_estilo():
-    artistas = a.listar_estilos()
+    artistas = a.listar_estilo()
     return render_template("estilos.html", estilos=estilos)
 
 @app.route("/estilo/remover/<int:id_estilo>")
