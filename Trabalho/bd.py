@@ -2,7 +2,7 @@ import sqlite3
 
 class Musica:
     def criar():
-        conn = sqlite3.connect('musica.db')
+        conn = sqlite3.connect('spotify.db')
         cursor = conn.cursor()
 
         cursor.execute("""
@@ -17,7 +17,7 @@ class Musica:
 
 
     def nova_musica(nome, tipo, artista):
-        conn = sqlite3.connect('musica.db')
+        conn = sqlite3.connect('spotify.db')
         cursor = conn.cursor()
 
         cursor.execute("""
@@ -28,8 +28,8 @@ class Musica:
         conn.close()
 
 
-    def listar_musica():
-        conn = sqlite3.connect('musica.db')
+    def listar_musicas():
+        conn = sqlite3.connect('spotify.db')
         cursor = conn.cursor()
         values = cursor.execute("SELECT * FROM musicas")
         resultado = []
@@ -45,7 +45,7 @@ class Musica:
 
 
     def atualiza_musica(id, nome, tipo, artista):
-        conn = sqlite3.connect('musica.db')
+        conn = sqlite3.connect('spotify.db')
         cursor = conn.cursor()
         cursor.execute(
             """
@@ -60,7 +60,7 @@ class Musica:
 
 
     def remove_musica(id):
-        conn = sqlite3.connect('musica.db')
+        conn = sqlite3.connect('spotify.db')
         cursor = conn.cursor()
         cursor.execute(
             """
@@ -74,7 +74,7 @@ class Musica:
 
 class Artista:
     def criar():
-        conn = sqlite3.connect('artista.db')
+        conn = sqlite3.connect('spotify.db')
         cursor = conn.cursor()
 
         cursor.execute("""
@@ -82,14 +82,14 @@ class Artista:
                 id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
                 nome VARCHAR(255) NOT NULL,
                 estilo_musica VARCHAR(255) NOT NULL,
-                sexo VARCHAR(10) NOT NULL);
+                sexo VARCHAR(10) NOT NULL)
         """)
 
         conn.close()
 
 
     def novo_artista(nome, estilo_musica, sexo):
-        conn = sqlite3.connect('artista.db')
+        conn = sqlite3.connect('spotify.db')
         cursor = conn.cursor()
 
         cursor.execute("""
@@ -100,8 +100,8 @@ class Artista:
         conn.close()
 
 
-    def listar_artista():
-        conn = sqlite3.connect('artista.db')
+    def listar_artistas():
+        conn = sqlite3.connect('spotify.db')
         cursor = conn.cursor()
         values = cursor.execute("SELECT * FROM artistas")
         resultado = []
@@ -117,7 +117,7 @@ class Artista:
 
 
     def atualiza_artista(id, nome, estilo_musica, sexo):
-        conn = sqlite3.connect('artistas.db')
+        conn = sqlite3.connect('spotify.db')
         cursor = conn.cursor()
         cursor.execute(
             """
@@ -132,7 +132,7 @@ class Artista:
 
 
     def remove_artista(id):
-        conn = sqlite3.connect('artista.db')
+        conn = sqlite3.connect('spotify.db')
         cursor = conn.cursor()
         cursor.execute(
             """
@@ -146,20 +146,21 @@ class Artista:
 
 class Estilo:
     def criar():
-        conn = sqlite3.connect('estilo.db')
+        conn = sqlite3.connect('spotify.db')
         cursor = conn.cursor()
 
         cursor.execute("""
             CREATE TABLE IF NOT EXISTS estilos(
                 id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-                nome_estilo VARCHAR(255) NOT NULL,
+                nome_estilo VARCHAR(255) NOT NULL
+            )
         """)
 
         conn.close()
 
 
     def novo_estilo(nome_estilo):
-        conn = sqlite3.connect('estilo.db')
+        conn = sqlite3.connect('spotify.db')
         cursor = conn.cursor()
 
         cursor.execute("""
@@ -170,8 +171,8 @@ class Estilo:
         conn.close()
 
 
-    def listar_estilo():
-        conn = sqlite3.connect('estilo.db')
+    def listar_estilos():
+        conn = sqlite3.connect('spotify.db')
         cursor = conn.cursor()
         values = cursor.execute("SELECT * FROM estilos")
         resultado = []
@@ -185,7 +186,7 @@ class Estilo:
 
 
     def atualiza_estilo(id, nome_estilo):
-        conn = sqlite3.connect('estilo.db')
+        conn = sqlite3.connect('spotify.db')
         cursor = conn.cursor()
         cursor.execute(
             """
@@ -193,14 +194,14 @@ class Estilo:
             SET nome=?, posicao=?, altura=?
             WHERE id=?;
             """,
-            (nome_estilos, id)
+            (nome_estilo, id)
         )
         conn.commit()
         conn.close()
 
 
     def remove_estilo(id):
-        conn = sqlite3.connect('estilo.db')
+        conn = sqlite3.connect('spotify.db')
         cursor = conn.cursor()
         cursor.execute(
             """
@@ -214,21 +215,22 @@ class Estilo:
 
 class Premio:
     def criar():
-        conn = sqlite3.connect('premio.db')
+        conn = sqlite3.connect('spotify.db')
         cursor = conn.cursor()
 
         cursor.execute("""
             CREATE TABLE IF NOT EXISTS premios(
                 id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
                 artista VARCHAR(255) NOT NULL,
-                premio VARCHAR(255) NOT NULL,
+                premio VARCHAR(255) NOT NULL
+                )
         """)
 
         conn.close()
 
 
     def novo_premio(artista,premio):
-        conn = sqlite3.connect('premio.db')
+        conn = sqlite3.connect('spotify.db')
         cursor = conn.cursor()
 
         cursor.execute("""
@@ -240,7 +242,7 @@ class Premio:
 
 
     def listar_premio():
-        conn = sqlite3.connect('premio.db')
+        conn = sqlite3.connect('spotify.db')
         cursor = conn.cursor()
         values = cursor.execute("SELECT * FROM premio")
         resultado = []
@@ -255,7 +257,7 @@ class Premio:
 
 
     def atualiza_premio(id, artista, premio):
-        conn = sqlite3.connect('premio.db')
+        conn = sqlite3.connect('spotify.db')
         cursor = conn.cursor()
         cursor.execute(
             """
@@ -270,7 +272,7 @@ class Premio:
 
 
     def remove_premio(id):
-        conn = sqlite3.connect('premio.db')
+        conn = sqlite3.connect('spotify.db')
         cursor = conn.cursor()
         cursor.execute(
             """
